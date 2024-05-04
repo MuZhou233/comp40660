@@ -1,3 +1,5 @@
-COMP40660 Assignment 2 Group Members:
+COMP40660 Assignment 2
+
+Group Members:
 Hang Li
 Yaning Li

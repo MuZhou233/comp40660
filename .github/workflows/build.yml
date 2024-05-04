@@ -45,3 +45,10 @@ jobs:
           tags: |
             muzhou233/comp40660:latest
             ghcr.io/muzhou233/comp40660:latest
+
+      - name: Update repo description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          readme-filepath: ./Task1/README.md
