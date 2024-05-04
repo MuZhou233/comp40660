@@ -1,4 +1,4 @@
-# COMP40660 Assignment 2
+# COMP40660 Assignment 2 - Task 1
 
 This container is only used for the purpose of the assignment.
 It is a simple container that runs a nginx server on port 80.
