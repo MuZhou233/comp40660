@@ -51,4 +51,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: muzhou233/comp40660
           readme-filepath: ./Task1/README.md
