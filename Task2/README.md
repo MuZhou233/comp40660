@@ -10,7 +10,6 @@ docker build -t muzhou233/comp40660-task2-server server
 docker run --rm --name muzhou233-comp40660-task2-server muzhou233/comp40660-task2-server
 
 # Open a new terminal and run the client
-cd client
 docker build -t muzhou233/comp40660-task2-client client
 docker run --rm --name muzhou233-comp40660-task2-client muzhou233/comp40660-task2-client
 ```
