@@ -34,5 +34,23 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         'standard_deviation': (sum((x - sum(numbers) / len(numbers)) ** 2 for x in numbers) / len(numbers)) ** 0.5
                     }
                     conn.sendall(pickle.dumps(res))
+                case 'light':
+                    lux = data['lux']
+                    time = data['time']
+                    curtain = 'open'
+                    light = 'on'
+                    if time < 6:
+                        curtain = 'closed'
+                        light = 'off'
+                    elif time < 8 or time > 20:
+                        curtain = 'closed'
+                        light = 'on' if lux < 100 else 'off'
+                    else:
+                        curtain = 'open' if lux < 500 else 'closed'
+                        light = 'on' if lux < 100 else 'off'
+                    conn.sendall(pickle.dumps({
+                        'curtain': curtain,
+                        'light': light
+                    }))
                 case _:
                     conn.sendall(b'Unknown command')

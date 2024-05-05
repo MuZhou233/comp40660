@@ -11,11 +11,13 @@ PORT = 9898        # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
+    print('Ping server')
     s.sendall(pickle.dumps({'command': 'ping'}))
     data = s.recv(1024)
     if data == b'pong':
         print('Connected to server')
-        # random 50 numbers
+
+        print('Requesting math operation')
         numbers = []
         for i in range(50):
             numbers.append(random.randint(1, 100))
@@ -26,7 +28,21 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         }))
         data = s.recv(1024)
         print('Received', repr(pickle.loads(data)))
+
+        print('Requesting light operation')
+        for i in range(5):
+            lux = random.randint(1, 300)
+            time = random.randint(0, 24)
+            print('Sending', lux, time)
+            s.sendall(pickle.dumps({
+                'command': 'light',
+                'lux': lux,
+                'time': time,
+            }))
+            data = s.recv(1024)
+            print('Received', repr(pickle.loads(data)))
+        print('Closing connection')
         s.sendall(pickle.dumps({'command': 'exit'}))
     else:
         print('Failed to connect to server')
-
+    print('Connection closed')
