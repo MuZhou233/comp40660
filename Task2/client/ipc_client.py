@@ -33,7 +33,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         for i in range(5):
             lux = random.randint(1, 300)
             time = random.randint(0, 24)
-            print('Sending', lux, time)
+            print('Sending current sates. lux:', lux, ', hour', time)
             s.sendall(pickle.dumps({
                 'command': 'light',
                 'lux': lux,
